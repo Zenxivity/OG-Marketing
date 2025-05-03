@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OG Marketing</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container" id="login-container">
+        <div class="login-box">
+            <h1>OG Marketing</h1>
+            <div class="login-form">
+                <div class="input-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" placeholder="Enter your username">
+                </div>
+                <div class="input-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" placeholder="Enter your password">
+                </div>
+                <button id="login-btn" class="btn">Login</button>
+                <p id="login-error" class="error-message"></p>
+            </div>
+        </div>
+    </div>
+
+    <div class="container hidden" id="dashboard-container">
+        <header>
+            <div class="logo">
+                <h1>OG Marketing</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#" class="nav-link active" data-section="my-business">My Business</a></li>
+                    <li><a href="#" class="nav-link" data-section="marketing-news">Marketing News</a></li>
+                    <li><a href="#" class="nav-link" data-section="restock-reporting">Restock Reporting</a></li>
+                </ul>
+            </nav>
+            <div class="user-info">
+                <span id="current-user">Welcome</span>
+                <button id="logout-btn" class="btn btn-small">Logout</button>
+            </div>
+        </header>
+
+        <main>
+            <!-- My Business Section -->
+            <section id="my-business" class="content-section">
+                <h2>My Business</h2>
+                <div class="business-dashboard">
+                    <div class="business-card">
+                        <h3>Business Overview</h3>
+                        <div class="business-stats">
+                            <div class="stat-item">
+                                <i class="fas fa-chart-line"></i>
+                                <span>Sales</span>
+                                <p id="sales-value">0</p>
+                            </div>
+                            <div class="stat-item">
+                                <i class="fas fa-coins"></i>
+                                <span>Revenue</span>
+                                <p id="revenue-value">$0</p>
+                            </div>
+                            <div class="stat-item">
+                                <i class="fas fa-box"></i>
+                                <span>Inventory</span>
+                                <p id="inventory-value">0 items</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="business-card">
+                        <h3>Business Notes</h3>
+                        <div class="notes-container">
+                            <textarea id="business-notes" placeholder="Add your business notes here..."></textarea>
+                            <button id="save-notes" class="btn">Save Notes</button>
+                        </div>
+                    </div>
+                    
+                    <div class="business-card">
+                        <h3>Business Goals</h3>
+                        <div class="goals-container">
+                            <div class="goal-item">
+                                <input type="text" id="new-goal" placeholder="Add a new goal...">
+                                <button id="add-goal" class="btn btn-small">Add</button>
+                            </div>
+                            <ul id="goals-list" class="goals-list">
+                                <!-- Goals will be added here dynamically -->
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Marketing News Section -->
+            <section id="marketing-news" class="content-section hidden">
+                <h2>Marketing News</h2>
+                <div class="news-container">
+                    <div class="post-form">
+                        <h3>Share News</h3>
+                        <div class="form-group">
+                            <input type="text" id="news-title" placeholder="News Title">
+                        </div>
+                        <div class="form-group">
+                            <textarea id="news-content" placeholder="Share marketing news, prices, or updates..."></textarea>
+                        </div>
+                        <button id="post-news" class="btn">Post News</button>
+                    </div>
+                    
+                    <div class="news-feed">
+                        <h3>Latest News</h3>
+                        <div id="news-list" class="news-list">
+                            <!-- News posts will be added here dynamically -->
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Restock Reporting Section -->
+            <section id="restock-reporting" class="content-section hidden">
+                <h2>Restock Reporting</h2>
+                <div class="restock-container">
+                    <div class="restock-form">
+                        <h3>Report Restock</h3>
+                        <div class="form-group">
+                            <input type="text" id="item-name" placeholder="Item Name">
+                        </div>
+                        <div class="form-group">
+                            <input type="number" id="item-quantity" placeholder="Quantity">
+                        </div>
+                        <div class="form-group">
+                            <textarea id="restock-notes" placeholder="Additional notes about the restock..."></textarea>
+                        </div>
+                        <button id="submit-restock" class="btn">Submit Restock Report</button>
+                    </div>
+                    
+                    <div class="restock-feed">
+                        <h3>Recent Restocks</h3>
+                        <div id="restock-list" class="restock-list">
+                            <!-- Restock reports will be added here dynamically -->
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>&copy; 2023 OG Marketing. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

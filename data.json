@@ -1,0 +1,33 @@
+{
+  "userData": {
+    "FreakyFaw": {
+      "notes": "",
+      "goals": [],
+      "stats": {
+        "sales": 0,
+        "revenue": 0,
+        "inventory": 0
+      }
+    },
+    "FreakyVity": {
+      "notes": "",
+      "goals": [],
+      "stats": {
+        "sales": 0,
+        "revenue": 0,
+        "inventory": 0
+      }
+    },
+    "enpiesie": {
+      "notes": "",
+      "goals": [],
+      "stats": {
+        "sales": 0,
+        "revenue": 0,
+        "inventory": 0
+      }
+    }
+  },
+  "newsData": [],
+  "restockData": []
+}
