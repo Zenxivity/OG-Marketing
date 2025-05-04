@@ -1,7 +1,7 @@
 // Google Sheets API URL
 // Nota: questo URL deve essere l'URL del Web App pubblicato, non l'URL dell'editor di script
 // Esempio: https://script.google.com/macros/s/AKfycbxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/exec
-const SHEETS_API_URL = 'https://script.google.com/macros/s/AKfycbw-NiVLE9Gzr8xeM_WpSNktZIc8bF5hHqNMwM9lLoQq/dev';
+const SHEETS_API_URL = 'https://script.google.com/macros/s/AKfycbwcBUCV3BNbNYzMuRLjS79YACJCu6yqiHwLDmtM59mrbf2Q0-Ftp_DIX7b4csn9IyrbCg/exec';
 
 // User credentials
 const users = [
