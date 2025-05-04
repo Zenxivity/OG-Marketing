@@ -31,6 +31,12 @@ const goalsList = document.getElementById('goals-list');
 const salesValue = document.getElementById('sales-value');
 const revenueValue = document.getElementById('revenue-value');
 const inventoryValue = document.getElementById('inventory-value');
+const editStatBtns = document.querySelectorAll('.edit-stat-btn');
+const editStatModal = document.getElementById('edit-stat-modal');
+const closeModal = document.querySelector('.close-modal');
+const editStatTitle = document.getElementById('edit-stat-title');
+const editStatValue = document.getElementById('edit-stat-value');
+const saveStatBtn = document.getElementById('save-stat-btn');
 
 // Marketing News elements
 const newsTitle = document.getElementById('news-title');
@@ -111,6 +117,21 @@ async function init() {
     addGoalBtn.addEventListener('click', addBusinessGoal);
     postNewsBtn.addEventListener('click', postMarketingNews);
     submitRestockBtn.addEventListener('click', submitRestockReport);
+    
+    // Add event listeners for stat editing
+    editStatBtns.forEach(btn => {
+        btn.addEventListener('click', openEditStatModal);
+    });
+    
+    closeModal.addEventListener('click', closeEditStatModal);
+    saveStatBtn.addEventListener('click', saveStatValue);
+    
+    // Close modal when clicking outside of it
+    window.addEventListener('click', (event) => {
+        if (event.target === editStatModal) {
+            closeEditStatModal();
+        }
+    });
     
     // Check if user is already logged in
     const savedUser = localStorage.getItem('currentUser');
@@ -365,6 +386,73 @@ function loadUserData() {
         revenueValue.textContent = `$${user.stats.revenue}`;
         inventoryValue.textContent = `${user.stats.inventory} items`;
     }
+}
+
+// Variables for stat editing
+let currentEditingStat = '';
+
+// Open edit stat modal
+function openEditStatModal(event) {
+    const statType = event.currentTarget.getAttribute('data-stat');
+    currentEditingStat = statType;
+    
+    // Set modal title
+    editStatTitle.textContent = `Edit ${statType.charAt(0).toUpperCase() + statType.slice(1)}`;
+    
+    // Set current value in input
+    let currentValue = 0;
+    
+    if (statType === 'sales') {
+        currentValue = parseInt(salesValue.textContent);
+    } else if (statType === 'revenue') {
+        currentValue = parseInt(revenueValue.textContent.replace('$', ''));
+    } else if (statType === 'inventory') {
+        currentValue = parseInt(inventoryValue.textContent);
+    }
+    
+    editStatValue.value = currentValue;
+    
+    // Show modal
+    editStatModal.style.display = 'block';
+}
+
+// Close edit stat modal
+function closeEditStatModal() {
+    editStatModal.style.display = 'none';
+    currentEditingStat = '';
+}
+
+// Save stat value
+function saveStatValue() {
+    if (!currentUser || !currentEditingStat) return;
+    
+    const newValue = parseInt(editStatValue.value);
+    
+    if (isNaN(newValue) || newValue < 0) {
+        alert('Please enter a valid number');
+        return;
+    }
+    
+    // Update UI
+    if (currentEditingStat === 'sales') {
+        salesValue.textContent = newValue;
+        userData[currentUser].stats.sales = newValue;
+    } else if (currentEditingStat === 'revenue') {
+        revenueValue.textContent = `$${newValue}`;
+        userData[currentUser].stats.revenue = newValue;
+    } else if (currentEditingStat === 'inventory') {
+        inventoryValue.textContent = `${newValue} items`;
+        userData[currentUser].stats.inventory = newValue;
+    }
+    
+    // Save data
+    saveData();
+    
+    // Close modal
+    closeEditStatModal();
+    
+    // Show success message
+    alert(`${currentEditingStat.charAt(0).toUpperCase() + currentEditingStat.slice(1)} updated successfully!`);
 }
 
 // Save business notes
